@@ -1,0 +1,102 @@
+# Prim's Algorithm in Python
+
+## Overview
+
+This project implements Prim's Algorithm in Python to find the Minimum Spanning Tree (MST) of a connected, weighted, undirected graph.
+
+A Minimum Spanning Tree is a subset of graph edges that:
+
+- Connects all vertices.
+- Contains no cycles.
+- Has the minimum possible total edge weight.
+
+Prim's Algorithm is a greedy algorithm that builds the MST one vertex at a time by always selecting the smallest available edge connecting a visited vertex to an unvisited vertex.
+
+---
+
+## How the Algorithm Works
+
+1. Start from any vertex.
+2. Mark it as visited.
+3. Add all its edges to a priority queue (min-heap).
+4. Select the edge with the smallest weight.
+5. If the destination vertex has not been visited:
+   - Add it to the MST.
+   - Mark it as visited.
+   - Add its outgoing edges to the priority queue.
+6. Repeat until all vertices are included.
+
+---
+
+## Time Complexity
+
+Using a Min Heap (Priority Queue):
+
+- Time Complexity: O(E log V)
+- Space Complexity: O(V + E)
+
+Where:
+
+- V = Number of Vertices
+- E = Number of Edges
+
+---
+
+## Example Graph
+
+        A
+      /   \
+    2/     \3
+    B---1---C
+     \     /
+     4\   /5
+       \ /
+        D
+
+---
+
+## Example Output
+
+---
+
+## Python Concepts Used
+
+- Dictionaries
+- Lists
+- Sets
+- Priority Queue (heapq)
+- Greedy Algorithms
+- Graph Traversal
+
+---
+
+## Learning Outcome
+
+Through this implementation, I learned:
+
+- How Minimum Spanning Trees work.
+- The difference between Prim's and Kruskal's algorithms.
+- How greedy algorithms make locally optimal choices.
+- How a priority queue helps efficiently select the next minimum edge.
+- Representation of weighted graphs using adjacency lists.
+
+---
+
+## File Structure
+
+---
+
+## Future Improvements
+
+- Return and display MST edges.
+- Visualize the generated MST.
+- Handle disconnected graphs.
+- Compare performance with Kruskal's Algorithm.
+
+---
+
+## Author
+
+Aayusshman
+Computer Science & Engineering Student
+Learning Data Structures, Algorithms, and Graph Theory through practical implementations.
