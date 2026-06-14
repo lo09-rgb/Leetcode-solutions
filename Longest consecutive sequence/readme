@@ -1,0 +1,130 @@
+# Longest Consecutive Sequence
+
+## Problem Statement
+
+Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+
+The solution must run in **O(n)** time complexity.
+
+### Example
+
+Input:
+
+```python
+[0,3,7,2,5,8,4,6,0,1]
+```
+
+Output:
+
+```python
+9
+```
+
+Explanation:
+
+The longest consecutive sequence is:
+
+```python
+0, 1, 2, 3, 4, 5, 6, 7, 8
+```
+
+which has a length of **9**.
+
+---
+
+## Approach
+
+### Step 1: Convert the array into a Set
+
+A set provides **O(1)** average-time lookups and automatically removes duplicates.
+
+```python
+s = set(nums)
+```
+
+### Step 2: Identify the Start of a Sequence
+
+A number is considered the start of a consecutive sequence if its previous number does not exist in the set.
+
+```python
+if num - 1 not in s:
+```
+
+For example:
+
+* `0` is a start because `-1` is not present.
+* `5` is not a start because `4` exists.
+
+### Step 3: Count the Consecutive Elements
+
+Once a starting element is found, keep moving forward while the next number exists.
+
+```python
+while current + 1 in s:
+    current += 1
+    length += 1
+```
+
+### Step 4: Track the Maximum Length
+
+Update the longest sequence found so far.
+
+```python
+longest = max(longest, length)
+```
+
+---
+
+## Python Solution
+
+```python
+class Solution:
+    def longestConsecutive(self, nums):
+        s = set(nums)
+        longest = 0
+
+        for num in s:
+            if num - 1 not in s:
+                current = num
+                length = 1
+
+                while current + 1 in s:
+                    current += 1
+                    length += 1
+
+                longest = max(longest, length)
+
+        return longest
+```
+
+---
+
+## Complexity Analysis
+
+### Time Complexity
+
+* Creating the set: **O(n)**
+* Traversing the set: **O(n)**
+* Each number is visited at most once while expanding sequences.
+
+Overall:
+
+```text
+O(n)
+```
+
+### Space Complexity
+
+The set stores all unique elements:
+
+```text
+O(n)
+```
+
+---
+
+## Key Insight
+
+Instead of starting a search from every number, only start counting when a number has **no predecessor** (`num - 1` is absent).
+
+This prevents repeatedly traversing the same sequence and allows the algorithm to achieve the required **O(n)** time complexity.
